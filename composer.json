@@ -1,0 +1,17 @@
+{
+    "name": "websyspro/database",
+    "description": "Set of features for database access",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Websyspro\\Database\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Websyspro",
+            "email": "cpd.emersontsa@gmail.com"
+        }
+    ],
+    "require": {}
+}
