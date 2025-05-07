@@ -1,6 +1,7 @@
 {
     "name": "websyspro/database",
-    "description": "Set of features for database access",
+    "description": "Set of features in PHP for creating entitys for database",
+    "license": "MIT",
     "type": "library",
     "autoload": {
         "psr-4": {
@@ -9,9 +10,13 @@
     },
     "authors": [
         {
-            "name": "Websyspro",
-            "email": "cpd.emersontsa@gmail.com"
+            "name": "websyspro",
+            "email": "websyspro.services@gmail.com"
         }
     ],
-    "require": {}
-}
+    "require": {
+      "websyspro/entity": "dev-main",
+      "websyspro/common": "dev-main"
+    }
+  }
+  
