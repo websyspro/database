@@ -14,7 +14,7 @@
             "email": "websyspro.services@gmail.com"
         }
     ],
-    "require": {
+    "require-dev": {
       "websyspro/entity": "dev-main",
       "websyspro/common": "dev-main"
     }

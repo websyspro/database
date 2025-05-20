@@ -5,7 +5,7 @@ namespace Websyspro\Database;
 use PDO;
 use PDOStatement;
 use PDOException;
-use Websyspro\Commons\TList;
+use Websyspro\Commons\Collection;
 
 class TConnect
 {
@@ -68,13 +68,13 @@ class TConnect
   }
 
   public function All(
-  ): TList {
+  ): Collection {
     if($this->handleState){
-      return new TList(
+      return new Collection(
         $this->handleState->fetchAll()
       );
     }
 
-    return new TList();
+    return new Collection();
   }
 }
