@@ -73,22 +73,26 @@ class Connect
   
   public function Query(
     string $sql
-  ): Connect {
+  ): DataList {
     try {
       if($this->Start()){
         $this->handleState = (
           $this->handle->query(
             $sql
           )
-        );  
+        ); 
+        
+        if( isset( $this->handleState )){
+          return DataList::Create(
+            $this->handleState->fetchAll()
+          );
+        }
       }
     } catch(PDOException $e) {
-      Message::Error(
-        LogType::Database, $e->getMessage()
-      );
+      return DataList::Create();
     }
 
-    return $this;    
+    return DataList::Create();
   }
 
   public function Exec(
@@ -109,16 +113,5 @@ class Connect
         LogType::Database, $e->getMessage()
       );
     }
-  }  
-
-  public function All(
-  ): DataList {
-    if( isset( $this->handleState )){
-      return DataList::Create(
-        $this->handleState->fetchAll()
-      );
-    }
-
-    return DataList::Create();
   }
 }
