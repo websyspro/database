@@ -1,2 +1,4 @@
 /vendor/
 index.php
+main.php
+composer.lock
