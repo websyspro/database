@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bf3798c8a61bda2189e53f852f6b80f3",
+    "content-hash": "af67f1ebe2ab5cc29cd34da5feac52a2",
     "packages": [],
     "packages-dev": [
         {
@@ -13,12 +13,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/websyspro/common.git",
-                "reference": "f8948017e3154a5aa532283cb47c2f4e8b2836a6"
+                "reference": "fdc54602529c8b379549dca3b93a8c08205ddf0d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/websyspro/common/zipball/f8948017e3154a5aa532283cb47c2f4e8b2836a6",
-                "reference": "f8948017e3154a5aa532283cb47c2f4e8b2836a6",
+                "url": "https://api.github.com/repos/websyspro/common/zipball/fdc54602529c8b379549dca3b93a8c08205ddf0d",
+                "reference": "fdc54602529c8b379549dca3b93a8c08205ddf0d",
                 "shasum": ""
             },
             "default-branch": true,
@@ -43,33 +43,27 @@
                 "issues": "https://github.com/websyspro/common/issues",
                 "source": "https://github.com/websyspro/common/tree/main"
             },
-            "time": "2025-05-20T00:57:21+00:00"
+            "time": "2025-06-04T14:28:23+00:00"
         },
         {
-            "name": "websyspro/entity",
+            "name": "websyspro/logger",
             "version": "dev-main",
             "source": {
                 "type": "git",
-                "url": "https://github.com/websyspro/entity.git",
-                "reference": "1f464b6b4061e2384106455239b048930d57aea8"
+                "url": "https://github.com/websyspro/logger.git",
+                "reference": "1cd5a05bd81b83dc01ef6509ba42c820d48b7399"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/websyspro/entity/zipball/1f464b6b4061e2384106455239b048930d57aea8",
-                "reference": "1f464b6b4061e2384106455239b048930d57aea8",
+                "url": "https://api.github.com/repos/websyspro/logger/zipball/1cd5a05bd81b83dc01ef6509ba42c820d48b7399",
+                "reference": "1cd5a05bd81b83dc01ef6509ba42c820d48b7399",
                 "shasum": ""
-            },
-            "require-dev": {
-                "websyspro/common": "dev-main",
-                "websyspro/database": "dev-main",
-                "websyspro/dynamicsql": "dev-main",
-                "websyspro/watch": "dev-main"
             },
             "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Websyspro\\Entity\\": "src/"
+                    "Websyspro\\Logger\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -82,19 +76,19 @@
                     "email": "websyspro.services@gmail.com"
                 }
             ],
-            "description": "Set of features in PHP for creating entitys for database",
+            "description": "Library for logs in server api",
             "support": {
-                "issues": "https://github.com/websyspro/entity/issues",
-                "source": "https://github.com/websyspro/entity/tree/main"
+                "issues": "https://github.com/websyspro/logger/issues",
+                "source": "https://github.com/websyspro/logger/tree/main"
             },
-            "time": "2025-05-20T01:06:01+00:00"
+            "time": "2025-06-05T21:54:45+00:00"
         }
     ],
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
         "websyspro/common": 20,
-        "websyspro/entity": 20
+        "websyspro/logger": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
