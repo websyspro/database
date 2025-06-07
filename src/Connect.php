@@ -81,9 +81,15 @@ class Connect
       preg_split("/;/", $dnsPaths->Last())
     );
     
-    $dnsPathsVars->Mapper(fn(string $var) => preg_split("/=/", $var))->Where(
+    $dnsPathsVars->Mapper(
+      fn(string $var) => preg_split("/=/", $var)
+    );
+
+    $dnsPathsVars->Where(
       fn(array $var) => in_array(
-        reset($var), ["dbname", "Database"]
+        reset($var), [
+          "dbname", "Database"
+        ]
       )
     );
 
