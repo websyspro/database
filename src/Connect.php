@@ -70,6 +70,25 @@ class Connect
       );
     }
   }
+
+  public function Database(
+  ): string {
+    $dnsPaths = DataList::Create(
+      preg_split( "/:/", $this->dnsProps->text, 2 )
+    );
+
+    $dnsPathsVars = DataList::Create(
+      preg_split("/;/", $dnsPaths->Last())
+    );
+    
+    $dnsPathsVars->Mapper(fn(string $var) => preg_split("/=/", $var))->Where(
+      fn(array $var) => in_array(
+        reset($var), ["dbname", "Database"]
+      )
+    );
+
+    return end($dnsPathsVars->First());
+  }
   
   public function Query(
     string $sql
