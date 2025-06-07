@@ -13,13 +13,15 @@ class DnsList
   ): DnsList {
     DnsList::$dnsList = DataList::Create(
       file( rootdir . DIRECTORY_SEPARATOR . ".env" )
-    )->Mapper(function(string $dns){
-      [ $name, $text ] = explode('=', $dns, 2);
+    )->Mapper(
+      function(string $dns){
+        [ $name, $text ] = explode('=', preg_replace("/\r?\n/", "", $dns), 2);
 
-      return new IDns(
-        $name, preg_replace("/(^\")|(\"$)/", "", $text)
-      );
-    });
+        return new IDns(
+          $name, preg_replace("/(^\")|(\"$)/", "", $text)
+        );
+      }
+    );
 
     return new static;
   }
