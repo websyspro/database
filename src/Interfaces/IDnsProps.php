@@ -4,9 +4,9 @@ namespace Websyspro\Database\Interfaces;
 
 class IDnsProps
 {
-  public string $text;
-  public string $user;
-  public string $pass;
+  public string|null $text;
+  public string|null $user;
+  public string|null $pass;
 
   public function __construct(
     string $dns
