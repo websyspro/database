@@ -122,14 +122,14 @@ class Connect
 
   public function Exec(
     string $sql
-  ): bool {
+  ): int {
     try {
       if($this->Start()){
         $this->handle->exec(
           $sql
         );
         
-        return true;  
+        return $this->handle->lastInsertId();  
       }
 
       return false;
