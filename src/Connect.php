@@ -132,11 +132,11 @@ class Connect
         return $this->handle->lastInsertId();  
       }
 
-      return false;
+      return 0;
     } catch(PDOException $e){
       return Message::Error(
         LogType::Database, $e->getMessage()
-      );
+      ) === false ? 0 : 1;
     }
   }
 }
