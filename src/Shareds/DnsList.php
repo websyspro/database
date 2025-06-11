@@ -29,7 +29,7 @@ class DnsList
   public static function dns(
     string | null $name = null
   ): IDns | null {
-    return DnsList::$dnsList->Where(
+    return DnsList::$dnsList->Copy()->Where(
       fn(IDns $dns) => $dns->name === (
         $name ?? "dns-default"
       )
