@@ -122,7 +122,7 @@ class Connect
 
   public function Exec(
     string $sql
-  ): int {
+  ): bool {
     try {
       if($this->Start()){
         $this->handle->exec(
@@ -132,11 +132,11 @@ class Connect
         return $this->handle->lastInsertId();  
       }
 
-      return 0;
+      return false;
     } catch(PDOException $e){
       return Message::Error(
         LogType::Database, $e->getMessage()
-      ) === false ? 0 : 1;
+      );
     }
   }
 }
