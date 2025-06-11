@@ -129,7 +129,7 @@ class Connect
           $sql
         );
         
-        return $this->handle->lastInsertId();  
+        return true;  
       }
 
       return false;
