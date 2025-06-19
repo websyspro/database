@@ -15,6 +15,7 @@ class Connect
 {
   private PDO $handle;
   private PDOStatement $handleState;
+  private int $lastId;
 
   public function __construct(
     private IDnsProps $dnsProps
@@ -125,9 +126,15 @@ class Connect
   ): bool {
     try {
       if($this->Start()){
-        $this->handle->exec(
-          $sql
+        $affectedRows = (
+          $this->handle->exec(
+            $sql
+          )
         );
+
+        if(preg_match("/^insert/i", trim($sql)) === 1 && $affectedRows === 1){
+          $this->lastId = $this->handle->lastInsertId();
+        }
         
         return true;  
       }
@@ -142,8 +149,8 @@ class Connect
 
   public function LastId(
   ): int {
-    if(isset($this->handle)){
-      return $this->handle->lastInsertId();
+    if(isset($this->lastId)){
+      return $this->lastId;
     } else return 0;
   }
 }
