@@ -139,4 +139,9 @@ class Connect
       );
     }
   }
+
+  public function LastId(
+  ): int {
+    return $this->handle->lastInsertId();
+  }
 }
