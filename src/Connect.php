@@ -133,6 +133,7 @@ class Connect
         );
 
         if(preg_match("/^insert/i", trim($sql)) === 1 && $affectedRows === 1){
+          print_r($this->handle->lastInsertId());
           $this->lastId = $this->handle->lastInsertId();
         }
         
