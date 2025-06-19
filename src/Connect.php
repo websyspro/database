@@ -142,6 +142,8 @@ class Connect
 
   public function LastId(
   ): int {
-    return $this->handle->lastInsertId();
+    if(isset($this->handle)){
+      return $this->handle->lastInsertId();
+    } else return 0;
   }
 }
