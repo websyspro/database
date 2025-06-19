@@ -123,7 +123,7 @@ class Connect
 
   public function Exec(
     string $sql
-  ): bool {
+  ): bool|int {
     try {
       if($this->Start()){
         $affectedRows = (
@@ -132,9 +132,10 @@ class Connect
           )
         );
 
-        if(preg_match("/^insert/i", trim($sql)) === 1 && $affectedRows === 1){
-          print_r($this->handle->lastInsertId());
-          $this->lastId = $this->handle->lastInsertId();
+        if($affectedRows === 1){
+          if(preg_match("/^insert/i", trim($sql)) === 1){
+            return $this->handle->lastInsertId();
+          }
         }
         
         return true;  
@@ -146,12 +147,5 @@ class Connect
         LogType::Database, $e->getMessage()
       );
     }
-  }
-
-  public function LastId(
-  ): int {
-    if(isset($this->lastId)){
-      return $this->lastId;
-    } else return 0;
   }
 }
