@@ -9,11 +9,11 @@ class DnsList
 {
   public static DataList $dnsList;
 
-  public static function Load(
+  public static function load(
   ): DnsList {
-    DnsList::$dnsList = DataList::Create(
+    DnsList::$dnsList = DataList::create(
       file( rootdir . DIRECTORY_SEPARATOR . ".env" )
-    )->Mapper(
+    )->mapper(
       function(string $dns){
         [ $name, $text ] = explode('=', preg_replace("/\r?\n/", "", $dns), 2);
 
@@ -29,10 +29,10 @@ class DnsList
   public static function dns(
     string | null $name = null
   ): IDns | null {
-    return DnsList::$dnsList->Copy()->Where(
+    return DnsList::$dnsList->copy()->where(
       fn(IDns $dns) => $dns->name === (
         $name ?? "dns-default"
       )
-    )->First();
+    )->first();
   }
 }

@@ -3,8 +3,8 @@
 namespace Websyspro\Database\Enums;
 
 enum ConnectDriver: string {
-  case MySQL = "mysql";
-  case Postgres = "pgsql";
-  case SQLServer = "sqlsrv";
-  case DBLib = "dblib";
+  case mysql = "mysql";
+  case postgres = "pgsql";
+  case sqlServer = "sqlsrv";
+  case dbLib = "dblib";
 }

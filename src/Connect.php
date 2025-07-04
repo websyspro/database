@@ -21,10 +21,10 @@ class Connect
     private IDnsProps $dnsProps
   ){}
 
-  public static function Set(
+  public static function set(
     string | null $dns = null
   ): Connect | null {
-    Connect::DnsList();
+    Connect::dnsList();
 
     if($dns === null){
       return new static(
@@ -45,14 +45,14 @@ class Connect
     );
   }
 
-  private static function DnsList(
+  private static function dnsList(
   ): void {
-    if(isset( DnsList::$dnsList ) === false){
-      DnsList::Load();
+    if(isset(DnsList::$dnsList) === false){
+      DnsList::load();
     }
   }
 
-  private function Start(
+  private function start(
   ): bool {
     try {
       $this->handle = new PDO(
@@ -66,27 +66,27 @@ class Connect
 
       return true;
     } catch (PDOException $e){
-      return Message::Error(
+      return Message::error(
         LogType::Database, $e->getMessage()
       );
     }
   }
 
-  public function Database(
+  public function database(
   ): string {
-    $dnsPaths = DataList::Create(
+    $dnsPaths = DataList::create(
       preg_split( "/:/", $this->dnsProps->text, 2 )
     );
 
-    $dnsPathsVars = DataList::Create(
+    $dnsPathsVars = DataList::create(
       preg_split("/;/", $dnsPaths->Last())
     );
     
-    $dnsPathsVars->Mapper(
+    $dnsPathsVars->mapper(
       fn(string $var) => preg_split("/=/", $var)
     );
 
-    $dnsPathsVars->Where(
+    $dnsPathsVars->where(
       fn(array $var) => in_array(
         reset($var), [
           "dbname", "Database"
@@ -94,14 +94,14 @@ class Connect
       )
     );
 
-    return end($dnsPathsVars->First());
+    return end($dnsPathsVars->first());
   }
   
-  public function Query(
+  public function query(
     string $sql
   ): DataList {
     try {
-      if($this->Start()){
+      if($this->start()){
         $this->handleState = (
           $this->handle->query(
             $sql
@@ -109,23 +109,23 @@ class Connect
         ); 
         
         if( isset( $this->handleState )){
-          return DataList::Create(
+          return DataList::create(
             $this->handleState->fetchAll()
           );
         }
       }
     } catch(PDOException $e) {
-      return DataList::Create();
+      return DataList::create();
     }
 
-    return DataList::Create();
+    return DataList::create();
   }
 
-  public function Exec(
+  public function exec(
     string $sql
   ): bool|int {
     try {
-      if($this->Start()){
+      if($this->start()){
         $affectedRows = (
           $this->handle->exec(
             $sql
@@ -143,7 +143,7 @@ class Connect
 
       return false;
     } catch(PDOException $e){
-      return Message::Error(
+      return Message::error(
         LogType::Database, $e->getMessage()
       );
     }
