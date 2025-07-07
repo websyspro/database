@@ -67,7 +67,7 @@ class Connect
       return true;
     } catch (PDOException $e){
       return Message::error(
-        LogType::Database, $e->getMessage()
+        LogType::database, $e->getMessage()
       );
     }
   }
@@ -144,7 +144,7 @@ class Connect
       return false;
     } catch(PDOException $e){
       return Message::error(
-        LogType::Database, $e->getMessage()
+        LogType::database, $e->getMessage()
       );
     }
   }
