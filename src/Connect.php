@@ -54,7 +54,6 @@ class Connect
 
   private function start(
   ): bool {
-    print_r($this->dnsProps);
     try {
       $this->handle = new PDO(
         $this->dnsProps->text, 
@@ -70,7 +69,7 @@ class Connect
     }
   }
 
-  public function database(
+  private function database(
   ): string {
     $dnsPaths = DataList::create(
       preg_split( "/:/", $this->dnsProps->text, 2 )
@@ -91,6 +90,8 @@ class Connect
         ]
       )
     );
+
+    print_r($dnsPathsVars);
 
     return end($dnsPathsVars->first());
   }
