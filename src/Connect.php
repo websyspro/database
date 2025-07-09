@@ -91,7 +91,8 @@ class Connect
       )
     );
 
-    print_r($dnsPathsVars->first());
+    [ $host, $database ] = $dnsPathsVars->first();
+    print_r($database);
 
     return end($dnsPathsVars->first());
   }
