@@ -58,10 +58,7 @@ class Connect
       $this->handle = new PDO(
         $this->dnsProps->text, 
         $this->dnsProps->user, 
-        $this->dnsProps->pass, [
-          PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ,
-          PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
-        ]
+        $this->dnsProps->pass
       );
 
       return true;
@@ -110,7 +107,9 @@ class Connect
         
         if( isset( $this->handleState )){
           return DataList::create(
-            $this->handleState->fetchAll()
+            $this->handleState->fetchAll(
+              PDO::FETCH_OBJ
+            )
           );
         }
       }
