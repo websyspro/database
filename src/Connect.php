@@ -96,7 +96,7 @@ class Connect
     );
 
     print_r(
-      $database
+      $database->last()
     );
 
     return $database->last();
