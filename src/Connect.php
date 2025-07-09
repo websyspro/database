@@ -91,7 +91,7 @@ class Connect
       )
     );
 
-    print_r($dnsPathsVars);
+    print_r($dnsPathsVars->first());
 
     return end($dnsPathsVars->first());
   }
