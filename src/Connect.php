@@ -54,6 +54,7 @@ class Connect
 
   private function start(
   ): bool {
+    print_r($this->dnsProps);
     try {
       $this->handle = new PDO(
         $this->dnsProps->text, 
