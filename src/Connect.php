@@ -91,10 +91,15 @@ class Connect
       )
     );
 
-    [ $host, $database ] = $dnsPathsVars->first();
-    print_r($database);
+    $database = DataList::create(
+      $dnsPathsVars->first()
+    );
 
-    return end($dnsPathsVars->first());
+    print_r(
+      $database
+    );
+
+    return $database->last();
   }
   
   public function query(
