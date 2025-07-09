@@ -69,7 +69,7 @@ class Connect
     }
   }
 
-  private function database(
+  public function database(
   ): string {
     $dnsPaths = DataList::create(
       preg_split( "/:/", $this->dnsProps->text, 2 )
