@@ -51,12 +51,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/websyspro/logger.git",
-                "reference": "f713ae636984b2933038d1b8e87e8ddd10070cfe"
+                "reference": "eb78b817d6038b4b234404513520884f5ba3d660"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/websyspro/logger/zipball/f713ae636984b2933038d1b8e87e8ddd10070cfe",
-                "reference": "f713ae636984b2933038d1b8e87e8ddd10070cfe",
+                "url": "https://api.github.com/repos/websyspro/logger/zipball/eb78b817d6038b4b234404513520884f5ba3d660",
+                "reference": "eb78b817d6038b4b234404513520884f5ba3d660",
                 "shasum": ""
             },
             "default-branch": true,
@@ -81,7 +81,7 @@
                 "issues": "https://github.com/websyspro/logger/issues",
                 "source": "https://github.com/websyspro/logger/tree/main"
             },
-            "time": "2025-07-04T16:51:22+00:00"
+            "time": "2025-07-09T16:47:37+00:00"
         }
     ],
     "aliases": [],

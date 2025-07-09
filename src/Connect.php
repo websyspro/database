@@ -67,7 +67,7 @@ class Connect
       return true;
     } catch (PDOException $e){
       return Message::error(
-        LogType::database, $e->getMessage()
+        LogType::database, $e->getMessage() . " - " . $this->dnsProps->text
       );
     }
   }
