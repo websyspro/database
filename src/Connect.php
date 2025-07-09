@@ -91,15 +91,9 @@ class Connect
       )
     );
 
-    $database = DataList::create(
+    return DataList::create(
       $dnsPathsVars->first()
-    );
-
-    print_r(
-      $database->last()
-    );
-
-    return $database->last();
+    )->last();
   }
   
   public function query(
