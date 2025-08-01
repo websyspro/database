@@ -1,22 +1,26 @@
 {
-    "name": "websyspro/database",
-    "description": "Set of features in PHP for creating entitys for database",
-    "license": "MIT",
-    "type": "library",
-    "autoload": {
-        "psr-4": {
-            "Websyspro\\Database\\": "src/"
-        }
-    },
-    "authors": [
-        {
-            "name": "websyspro",
-            "email": "websyspro.services@gmail.com"
-        }
-    ],
-    "require-dev": {
-      "websyspro/logger": "dev-main",
-      "websyspro/common": "dev-main"
+  "name": "websyspro/database",
+  "description": "Set of features in PHP for creating entitys for database",
+  "license": "MIT",
+  "type": "library",
+  "autoload": {
+    "psr-4": {
+      "Websyspro\\Database\\": "src/"
     }
+  },
+  "authors": [
+    {
+      "name": "websyspro",
+      "email": "websyspro.services@gmail.com"
+    }
+  ],
+  "scripts": {
+    "update-git": "git add . && git commit -m \"Update components\" && git push origin HEAD"
+  },
+  "require-dev": {
+    "websyspro/dynamicsql": "dev-main",
+    "websyspro/logger": "dev-main",
+    "websyspro/common": "dev-main"
   }
+}
   

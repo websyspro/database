@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "af67f1ebe2ab5cc29cd34da5feac52a2",
+    "content-hash": "bed67bf82655cbf0f59bb5cdf18e1421",
     "packages": [],
     "packages-dev": [
         {
@@ -44,6 +44,52 @@
                 "source": "https://github.com/websyspro/common/tree/main"
             },
             "time": "2025-07-04T13:42:10+00:00"
+        },
+        {
+            "name": "websyspro/dynamicsql",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/websyspro/dynamicsql.git",
+                "reference": "f35156350d8f66c6e269270b61dd874f71610900"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/websyspro/dynamicsql/zipball/f35156350d8f66c6e269270b61dd874f71610900",
+                "reference": "f35156350d8f66c6e269270b61dd874f71610900",
+                "shasum": ""
+            },
+            "require-dev": {
+                "websyspro/common": "dev-main",
+                "websyspro/entity": "dev-main",
+                "websyspro/watch": "dev-main"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/Methods.php"
+                ],
+                "psr-4": {
+                    "Websyspro\\DynamicSql\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "websyspro",
+                    "email": "websyspro.services@gmail.com"
+                }
+            ],
+            "description": "Set of features in PHP for creating dynamic SQL",
+            "support": {
+                "issues": "https://github.com/websyspro/dynamicsql/issues",
+                "source": "https://github.com/websyspro/dynamicsql/tree/main"
+            },
+            "time": "2025-07-30T21:42:33+00:00"
         },
         {
             "name": "websyspro/logger",
@@ -88,6 +134,7 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "websyspro/common": 20,
+        "websyspro/dynamicsql": 20,
         "websyspro/logger": 20
     },
     "prefer-stable": false,

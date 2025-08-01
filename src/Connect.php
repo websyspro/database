@@ -8,6 +8,7 @@ use PDOStatement;
 use Websyspro\Commons\DataList;
 use Websyspro\Database\Interfaces\IDnsProps;
 use Websyspro\Database\Shareds\DnsList;
+use Websyspro\DynamicSql\Enums\EDriverType;
 use Websyspro\Logger\Enums\LogType;
 use Websyspro\Logger\Message;
 
@@ -67,6 +68,24 @@ class Connect
         LogType::database, $e->getMessage() . " - " . $this->dnsProps->pass
       );
     }
+  }
+
+  public function driverType(
+  ): EDriverType {
+    [ $driver ] = explode(
+      ":", $this->dnsProps->text
+    );
+
+    if($driver === "mysql")
+      return EDriverType::mysql;
+    if($driver === "pgsql")
+      return EDriverType::postgress;
+    if($driver === "sqlsrv")
+      return EDriverType::sqlserver;
+    if($driver === "dblib")
+      return EDriverType::sqlserver;
+
+    return EDriverType::mysql;
   }
 
   public function database(
