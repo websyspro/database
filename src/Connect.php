@@ -162,9 +162,9 @@ class Connect
       }
 
       return false;
-    } catch(PDOException $e){
+    } catch(PDOException $error){
       return Message::error(
-        LogType::database, $e->getMessage()
+        LogType::database, $error->getMessage()
       );
     }
   }
