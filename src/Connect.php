@@ -28,20 +28,32 @@ class Connect
     Connect::dnsList();
 
     if($dns === null){
-      return new static(
-        new IDnsProps(
-          DnsList::dns(
-            "dns-default"
-          )->value
-        )
-      );
+      $dnsDefault = DnsList::dns(
+        "dns-default"
+      )->value;
+
+      if($dnsDefault !== null){
+        return new static(
+          new IDnsProps(
+            DnsList::dns(
+              "dns-default"
+            )->value
+          )
+        );
+      } else return null;
+    }
+
+    $dnsProps = DnsList::dns(
+      "dns-{$dns}"
+    )->value;
+
+    if(is_null($dnsProps)){
+      return null;
     }
     
     return new static(
       new IDnsProps(
-        DnsList::dns(
-          "dns-{$dns}"
-        )->value
+        $dnsProps
       )
     );
   }
@@ -65,7 +77,7 @@ class Connect
       return true;
     } catch (PDOException $e){
       return Message::error(
-        LogType::database, $e->getMessage() . " - " . $this->dnsProps->pass
+        LogType::database, $e->getMessage()
       );
     }
   }

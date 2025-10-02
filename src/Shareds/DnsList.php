@@ -29,10 +29,16 @@ class DnsList
   public static function dns(
     string | null $name = null
   ): IDns | null {
-    return DnsList::$dnsList->copy()->where(
-      fn(IDns $dns) => $dns->name === (
-        $name ?? "dns-default"
-      )
-    )->first();
+    $dns = DnsList::$dnsList
+      ->copy()
+      ->where(
+        fn(IDns $dns) => $dns->name === (
+          $name ?? "dns-default"
+        )
+      );
+
+    return $dns->exist() 
+      ? $dns->first() 
+      : null;
   }
 }
