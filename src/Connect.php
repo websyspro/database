@@ -77,7 +77,7 @@ class Connect
       return true;
     } catch (PDOException $e){
       return Message::error(
-        LogType::database, $e->getMessage()
+        LogType::Database, $e->getMessage()
       );
     }
   }
