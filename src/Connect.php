@@ -45,15 +45,19 @@ class Connect
 
     $dnsProps = DnsList::dns(
       "dns-{$dns}"
-    )->value;
+    );
 
-    if(is_null($dnsProps)){
+    if(isset($dnsProps->value) === false){
+      return null;
+    }
+
+    if(is_null($dnsProps->value)){
       return null;
     }
     
     return new static(
       new IDnsProps(
-        $dnsProps
+        $dnsProps->value
       )
     );
   }
