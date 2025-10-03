@@ -180,7 +180,7 @@ class Connect
       return false;
     } catch(PDOException $error){
       return Message::error(
-        LogType::database, $error->getMessage()
+        LogType::Database, $error->getMessage()
       );
     }
   }
