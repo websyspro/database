@@ -12,7 +12,10 @@ class DnsList
   public static function load(
   ): DnsList {
     if(file_exists(rootdir . DIRECTORY_SEPARATOR . ".env") === false){
-      DnsList::$dnsList = DataList::create([]);
+      DnsList::$dnsList = (
+        DataList::create([])
+      );
+      
       return new static;
     }
 
