@@ -6,8 +6,6 @@ use PDO;
 use PDOException;
 use PDOStatement;
 use Websyspro\Commons\DataList;
-use Websyspro\Database\Interfaces\IDnsProps;
-use Websyspro\Database\Shareds\DnsList;
 use Websyspro\DynamicSql\Enums\EDriverType;
 use Websyspro\Logger\Enums\LogType;
 use Websyspro\Logger\Message;
@@ -18,20 +16,19 @@ class Connect
   private PDOStatement $handleState;
   private int $lastId;
 
-  public function __construct(
-    //private IDnsProps $dnsProps
-  ){}
+  public function __construct(){}
 
   public static function set(
   ): Connect {
     return new static();
   }
 
-  private static function dnsList(
-  ): void {
-    if(isset(DnsList::$dnsList) === false){
-      DnsList::load();
-    }
+  private function env(
+    string $key
+  ): string {
+    return getenv(
+      "DATABASE_{$key}"
+    );
   }
 
   private function start(
@@ -39,8 +36,8 @@ class Connect
     try {
       $this->handle = new PDO(
         $this->getConnectStr(), 
-        getenv("DATABASE_USER"), 
-        getenv("DATABASE_PASS")
+        $this->env("USER"),
+        $this->env("PASS")
       );
 
       return true;
@@ -53,12 +50,11 @@ class Connect
 
   private function getConnectStr(
   ): string {
-    $driver = getenv("DATABASE_DRIVE");
-    $host = getenv("DATABASE_HOST");
-    $port = getenv("DATABASE_PORT");
-    $name = getenv("DATABASE_NAME");
+    $host = $this->env("HOST");
+    $port = $this->env("PORT");
+    $name = $this->env("NAME");
 
-    switch (strtolower($driver)) {
+    switch (strtolower($this->env("TYPE"))) {
       case "mysql":
         return "mysql:host={$host};dbname={$name};port={$port};charset=utf8mb4";
       case "pg":
