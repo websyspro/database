@@ -11,6 +11,7 @@ class DnsList
 
   public static function load(
   ): DnsList {
+    /*
     if(file_exists(rootdir . DIRECTORY_SEPARATOR . ".env") === false){
       DnsList::$dnsList = (
         DataList::create([])
@@ -29,7 +30,7 @@ class DnsList
           $name, preg_replace("/(^\")|(\"$)/", "", $text)
         );
       }
-    );
+    ); */
 
     return new static;
   }
@@ -37,6 +38,9 @@ class DnsList
   public static function dns(
     string | null $name = null
   ): IDns | null {
+    return null;
+
+    /*
     $dns = DnsList::$dnsList
       ->copy()
       ->where(
@@ -47,6 +51,6 @@ class DnsList
 
     return $dns->exist() 
       ? $dns->first() 
-      : null;
+      : null; */
   }
 }
