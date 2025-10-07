@@ -50,23 +50,18 @@ class Connect
 
   private function getConnectStr(
   ): string {
-    $host = $this->env("HOST");
-    $port = $this->env("PORT");
-    $name = $this->env("NAME");
-
-    switch (strtolower($this->env("TYPE"))) {
-      case "mysql":
-        return "mysql:host={$host};dbname={$name};port={$port};charset=utf8mb4";
-      case "pg":
-      case "pgsql":
-        return "pgsql:host={$host};dbname={$name};port={$port}";
-      case "sqlsrv":
-        return "sqlsrv:Server={$host},{$port};Database={$name}";
-      case 'dblib':
-        return "dblib:host={$host}:{$port};dbname={$name}";
-      default:
-        return "";
-    }
+    if(in_array(strtolower($this->env("TYPE")), ["mysql"])){
+      return "mysql:host={$this->env("HOST")};dbname={$this->env("NAME")};port={$this->env("PORT")};charset=utf8mb4";
+    } else 
+    if(in_array(strtolower($this->env("TYPE")), ["pg","pgsql"])){
+      return "pgsql:host={$this->env("HOST")};dbname={$this->env("NAME")};port={$this->env("PORT")}";
+    } else
+    if(in_array(strtolower($this->env("TYPE")), ["sqlsrv"])){
+      return "sqlsrv:Server={$this->env("HOST")},{$this->env("PORT")};Database={$this->env("NAME")}";
+    } else 
+    if(in_array(strtolower($this->env("TYPE")), ["dblib"])){
+      return "dblib:host={$this->env("HOST")}:{$this->env("PORT")};dbname={$this->env("NAME")}";
+    } else return "";
   }
 
   public function driverType(
