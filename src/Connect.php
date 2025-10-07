@@ -73,9 +73,9 @@ class Connect
   ): bool {
     try {
       $this->handle = new PDO(
-        $this->dnsProps->text, 
-        $this->dnsProps->user, 
-        $this->dnsProps->pass
+        $this->getConnectStr(), 
+        getenv("DATABASE_USER"), 
+        getenv("DATABASE_PASS")
       );
 
       return true;
@@ -86,10 +86,32 @@ class Connect
     }
   }
 
+  private function getConnectStr(
+  ): string {
+    $driver = getenv("DATABASE_DRIVE");
+    $host = getenv("DATABASE_HOST");
+    $port = getenv("DATABASE_PORT");
+    $name = getenv("DATABASE_NAME");
+
+    switch (strtolower($driver)) {
+      case "mysql":
+        return "mysql:host={$host};dbname={$name};port={$port};charset=utf8mb4";
+      case "pg":
+      case "pgsql":
+        return "pgsql:host={$host};dbname={$name};port={$port}";
+      case "sqlsrv":
+        return "sqlsrv:Server={$host},{$port};Database={$name}";
+      case 'dblib':
+        return "dblib:host={$host}:{$port};dbname={$name}";
+      default:
+        return "";
+    }
+  }
+
   public function driverType(
   ): EDriverType {
-    [ $driver ] = explode(
-      ":", $this->dnsProps->text
+    $driver = getenv(
+      "DATABASE_DRIVE"
     );
 
     if($driver === "mysql")
