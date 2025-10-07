@@ -19,12 +19,13 @@ class Connect
   private int $lastId;
 
   public function __construct(
-    private IDnsProps $dnsProps
+    //private IDnsProps $dnsProps
   ){}
 
   public static function set(
     string | null $dns = null
   ): Connect | null {
+    /*
     Connect::dnsList();
 
     if($dns === null){
@@ -53,12 +54,12 @@ class Connect
 
     if(is_null($dnsProps->value)){
       return null;
-    }
+    }*/
     
     return new static(
-      new IDnsProps(
-        $dnsProps->value
-      )
+      //new IDnsProps(
+      //  $dnsProps->value
+      //)
     );
   }
 
@@ -128,29 +129,7 @@ class Connect
 
   public function database(
   ): string {
-    $dnsPaths = DataList::create(
-      preg_split( "/:/", $this->dnsProps->text, 2 )
-    );
-
-    $dnsPathsVars = DataList::create(
-      preg_split("/;/", $dnsPaths->Last())
-    );
-    
-    $dnsPathsVars->mapper(
-      fn(string $var) => preg_split("/=/", $var)
-    );
-
-    $dnsPathsVars->where(
-      fn(array $var) => in_array(
-        reset($var), [
-          "dbname", "Database"
-        ]
-      )
-    );
-
-    return DataList::create(
-      $dnsPathsVars->first()
-    )->last();
+    return getenv("DATABASE_NAME");
   }
   
   public function query(
