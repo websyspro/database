@@ -23,7 +23,7 @@ class Connect
   ){}
 
   public static function set(
-    string | null $dns = null
+    //string | null $dns = null
   ): Connect | null {
     /*
     Connect::dnsList();
