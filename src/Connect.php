@@ -23,44 +23,8 @@ class Connect
   ){}
 
   public static function set(
-    //string | null $dns = null
-  ): Connect | null {
-    /*
-    Connect::dnsList();
-
-    if($dns === null){
-      $dnsDefault = DnsList::dns(
-        "dns-default"
-      )->value;
-
-      if($dnsDefault !== null){
-        return new static(
-          new IDnsProps(
-            DnsList::dns(
-              "dns-default"
-            )->value
-          )
-        );
-      } else return null;
-    }
-
-    $dnsProps = DnsList::dns(
-      "dns-{$dns}"
-    );
-
-    if(isset($dnsProps->value) === false){
-      return null;
-    }
-
-    if(is_null($dnsProps->value)){
-      return null;
-    }*/
-    
-    return new static(
-      //new IDnsProps(
-      //  $dnsProps->value
-      //)
-    );
+  ): Connect {
+    return new static();
   }
 
   private static function dnsList(
